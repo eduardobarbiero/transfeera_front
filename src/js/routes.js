@@ -17,6 +17,17 @@ angular.module('transfeera-front')
                 'sideBarMenu':{
                     templateUrl: 'templates/defaults/_sideBarMenu.html',
                     controller: 'MasterCtrl'
+                },                
+                'container@': {
+                    templateUrl: 'templates/defaults/home.html'
+                }
+            }
+        }) 
+        .state('default.home',{
+            url: '/',            
+            views: {                
+                'container@': {
+                    templateUrl: 'templates/defaults/home.html'
                 }
             }
         })      
