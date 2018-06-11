@@ -1,0 +1,33 @@
+<rd-widget>
+  <rd-widget-header icon="fa-user-plus" title="{{(city.id != undefined ? 'Editar' : 'Cadastro')}} Cidade"></rd-widget-header>
+  <rd-widget-body>
+    <form ng-submit="city_form.$valid && (city.id != undefined ? update(city) : create(city))" class="form-horizontal"
+      name="city_form" novalidate>      
+      <div class="row">
+        <div class="col-md-12">
+          <label>Nome</label>
+          <input type="text" class="form-control" placeholder="Nome" name="name" ng-model="city.name" required>
+          <p class="danger-block" ng-show="city_form.$submitted && city_form.name.$invalid">Nome do estado é obrigatório.</p>
+        </div>
+      </div>      
+      <div class="row">
+          <div class="col-md-12">
+            <label>Estado</label>
+            <ui-select ng-model="city.stateId" title="Escolha um estado.." required>
+              <ui-select-match placeholder="Selecione um estado...">{{$select.selected.name}}</ui-select-match>
+              <ui-select-choices repeat="state.id as state in states | filter: $select.search | orderBy: 'name'">
+                <div ng-bind-html="state.name | highlight: $select.search"></div>                
+              </ui-select-choices>
+            </ui-select>
+            <p class="danger-block" ng-show="city_form.$submitted && city_form.stateId.$invalid">Estado é obrigatório.</p>
+          </div>
+        </div>
+      <div class="row">
+        <div class="col-md-10">
+          <input class="btn btn-success" type="submit" ng-value="city.id != undefined ? 'Atualizar' : 'Cadastrar'">
+          <input class="btn btn-danger" ng-click="ngDialog.close()" type="button" value="Cancelar">
+        </div>
+      </div>
+    </form>
+  </rd-widget-body>
+</rd-widget>

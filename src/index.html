@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="en" ng-app="transfeera-front">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Transfeera</title>
+
+        <!-- Styles -->
+
+        <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+        <link rel="stylesheet" type="text/css" href="components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="components/rdash-ui/dist/css/rdash.min.css">
+        <link rel="stylesheet" type="text/css" href="components/angular-ui-notification/dist/angular-ui-notification.min.css">
+        <link rel="stylesheet" type="text/css" href="components/ng-dialog/css/ngDialog.min.css">
+        <link rel="stylesheet" type="text/css" href="components/ng-dialog/css/ngDialog-theme-plain.min.css">
+        <link rel="stylesheet" type="text/css" href="components/angular-ui-select/dist/select.min.css">
+
+        <!-- Scripts -->
+
+        <script type="text/javascript" src="components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+        <script type="text/javascript" src="components/angular-cookies/angular-cookies.min.js"></script>
+        <script type="text/javascript" src="components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="components/angular-ui-notification/dist/angular-ui-notification.min.js"></script>
+        <script type="text/javascript" src="components/ng-dialog/js/ngDialog.min.js"></script>        
+        <script type="text/javascript" src='components/ngMask/dist/ngMask.min.js'></script>
+        <script type="text/javascript" src='components/angular-ui-select/dist/select.min.js'></script>                
+
+        <!-- Angular Scripts -->
+
+        <script type="text/javascript" src="js/module.js"></script>
+        <script type="text/javascript" src="js/routes.js"></script>
+        <script type="text/javascript" src="js/constants.js"></script>
+
+        <!-- Providers -->
+
+        <script type="text/javascript" src="js/providers/transfeera-front.js"></script>
+
+        <!-- Directives -->
+        
+        <script type="text/javascript" src="js/directives/widget_body.js"></script>
+        <script type="text/javascript" src="js/directives/widget_footer.js"></script>
+        <script type="text/javascript" src="js/directives/widget_header.js"></script>
+        <script type="text/javascript" src="js/directives/widget.js"></script>        
+
+        <!-- Services -->
+        
+        <script type="text/javascript" src="js/services/state.js"></script>        
+        <script type="text/javascript" src="js/services/city.js"></script>   
+        <script type="text/javascript" src="js/services/cep.js"></script>        
+
+        <!-- Controllers -->
+
+        
+        <script type="text/javascript" src="js/controllers/master_controller.js"></script>        
+        <script type="text/javascript" src="js/controllers/states_controller.js"></script>
+        <script type="text/javascript" src="js/controllers/cities_controller.js"></script>
+        <script type="text/javascript" src="js/controllers/ceps_controller.js"></script>
+        
+        <!-- Custom Scripts -->
+
+        <script type="text/javascript" src="js/custom/custom.js"></script>        
+
+    </head>
+    <body ng-controller="MasterCtrl">
+        <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
+            <div ui-view="sideBarMenu"></div>
+            <div id="content-wrapper">
+                <div class="page-content">
+                    <div ui-view="navigationMenu"></div>
+                    <div ui-view="container"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

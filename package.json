@@ -1,0 +1,23 @@
+{
+  "name": "transfeera-front",
+  "version": "1.0.0",
+  "author": "Eduardo Barbiero",
+  "dependencies": {
+    "express": "^4.14.0",
+    "ejs": "~1.0.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "description": "Cadastro de estado, cidades e CEPs.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduardobarbiero/transfeera_front.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eduardobarbiero/transfeera_front/issues"
+  },
+  "homepage": "https://github.com/eduardobarbiero/transfeera_front#readme"
+}

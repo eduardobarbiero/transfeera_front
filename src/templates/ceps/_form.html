@@ -1,0 +1,51 @@
+<rd-widget>
+  <rd-widget-header icon="fa-user-plus" title="{{(cep.id != undefined ? 'Editar' : 'Cadastro')}} CEP"></rd-widget-header>
+  <rd-widget-body>
+    <form ng-submit="cep_form.$valid && (cep.id != undefined ? update(cep) : create(cep))" class="form-horizontal"
+      name="cep_form" novalidate>      
+      <div class="row">
+        <div class="col-md-8">
+          <label>Rua</label>
+          <input type="text" class="form-control" placeholder="Rua" name="address" ng-model="cep.address" required>
+          <p class="danger-block" ng-show="cep_form.$submitted && cep_form.address.$invalid">Rua é obrigatório.</p>
+        </div>
+        <div class="col-md-4">
+          <label>Numero</label>
+          <input type="text" class="form-control" placeholder="Número" name="number" ng-model="cep.number" required>
+          <p class="danger-block" ng-show="cep_form.$submitted && cep_form.number.$invalid">Número é obrigatório.</p>
+        </div>
+      </div> 
+      <div class="row">
+        <div class="col-md-12">
+          <label>Complemento</label>
+          <input type="text" class="form-control" placeholder="Complemento" name="Complement" ng-model="cep.complement">
+        </div>
+      </div> 
+      <div class="row">
+        <div class="col-md-12">
+          <label>Bairro</label>
+          <input type="text" class="form-control" placeholder="Bairro" name="district" ng-model="cep.district" required>
+          <p class="danger-block" ng-show="cep_form.$submitted && cep_form.district.$invalid">Nome do bairro é obrigatório.</p>
+        </div>
+      </div>      
+      <div class="row">
+        <div class="col-md-12">
+          <label>Cidade</label>
+          <ui-select ng-model="cep.cityId" title="Escolha uma cidade.." required>
+            <ui-select-match placeholder="Selecione uma cidade...">{{$select.selected.name}}</ui-select-match>
+            <ui-select-choices repeat="city.id as city in cities | filter: $select.search | orderBy: 'name'">
+              <div ng-bind-html="city.name | highlight: $select.search"></div>                
+            </ui-select-choices>
+          </ui-select>
+          <p class="danger-block" ng-show="cep_form.$submitted && cep_form.cityId.$invalid">Cidade é obrigatório.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10">
+          <input class="btn btn-success" type="submit" ng-value="cep.id != undefined ? 'Atualizar' : 'Cadastrar'">
+          <input class="btn btn-danger" ng-click="ngDialog.close()" type="button" value="Cancelar">
+        </div>
+      </div>
+    </form>
+  </rd-widget-body>
+</rd-widget>
