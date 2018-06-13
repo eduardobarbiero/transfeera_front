@@ -14,7 +14,8 @@ const routes = {
 	indexRoute: { onEnter: (nextState, replace) => replace('/') },
 	childRoutes: [
         require('modules/home/routes').default,
-        require('modules/states/routes').default
+        require('modules/states/routes').default,
+        require('modules/cities/routes').default
 	]
 };
 

@@ -1,56 +1,76 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
+import CitiesController from 'store/controllers/CitiesController';
 import StatesController from 'store/controllers/StatesController';
+import { statesData } from 'store/actions/stateAction';
+import store from 'store/configureStore';
 
 import { FieldGroup } from 'components/forms/FieldGroup';
+import { SelectGroup } from 'components/forms/SelectGroup';
 import FormValidate from 'components/forms/FormValidate';
 import { Link } from 'react-router';
 import NotificationSystem from 'react-notification-system';
 
-export default class Form extends React.Component {
+class Form extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {          
-            name: ''  
+            name: '',
+            stateId: undefined
         };        
     }
 
     componentWillMount() {
-        this.editMode = this.props.params.stateId || null
+        this.editMode = this.props.params.cityId || null;
+        this.getStates();
+
         if (this.editMode)
             this.edit();
     }
 
+    getCities() {
+		CitiesController.index().then(cities => {
+            store.dispatch(citiesData(cities));            
+        });
+    }	
+    
+    getStates() {
+		StatesController.index().then(states => {
+            store.dispatch(statesData(states));            
+        });
+	}	
+
     edit() {
-        StatesController.edit(this.props.params.stateId).then((state) => {
-            this.state = state;
+        CitiesController.edit(this.props.params.cityId).then((city) => {
+            this.state = city;
             this.setState(this.state);
         }), (error) => {
             this.notificationSystem.addNotification({
-                message: 'Estado não encontado!',
+                message: 'Cidade não encontada!',
                 level: 'error'
             });
         };
     }
 
     create() {        
-        StatesController.create(this.state).then(
-            (state) => this.props.router.push('/states')
+        CitiesController.create(this.state).then(
+            (state) => this.props.router.push('/cities')
         ), (error) => {            
             this.notificationSystem.addNotification({
-                message: 'Houve um problema ao criar o Estado!',
+                message: 'Houve um problema ao criar a Cidade!',
                 level: 'error'
             });
         };
     }    
 
     update() {
-        StatesController.update(this.state).then(
-            (state) => this.props.router.push('/states')
+        CitiesController.update(this.state).then(
+            (state) => this.props.router.push('/cities')
         ), (error) => {            
             this.notificationSystem.addNotification({
-                message: 'Houve um problema ao atualizar o Estado!',
+                message: 'Houve um problema ao atualizar a Cidade!',
                 level: 'error'
             });
         };
@@ -71,7 +91,7 @@ export default class Form extends React.Component {
                     <div className="col">
                         <div className="row mt-3">
                             <div className="col">
-                                <h1>{this.editMode ? "Atualizar" : "Adicionar"} Estado</h1>                        
+                                <h1>{this.editMode ? "Atualizar" : "Adicionar"} Cidade</h1>                        
                             </div>
                         </div>                                   
                         <div className="row mt-3">
@@ -89,13 +109,31 @@ export default class Form extends React.Component {
                                     required={true}
                                 />
                             </div>
-                        </div>        
+                        </div> 
+
+                        <div className="row mt-3">
+                            <div className="col">	
+                                <SelectGroup
+                                    id="state"                                    
+                                    label="Estado"
+                                    placeholder="Escolha um estado" 
+                                    componentClass="select"
+                                    value={this.state.stateId ? this.state.stateId : undefined}  
+                                    options={this.props.states}
+                                    onChange={(event) => {                                        
+                                        this.state.stateId = event.target.value;
+                                        this.setState(this.state);
+                                    }}
+                                    required={true}
+                                />
+                            </div>
+                        </div>                                
                         <div className="row mt-3">
                             <div className="col">	                    
                                 <button type="submit" className='btn btn-success btn-md float-left'>
                                     {this.editMode ? "Atualizar" : "Adicionar"}                        
                                 </button>
-                                <Link className="btn btn-default btn-md float-right" to="/states">Cancelar</Link>                            
+                                <Link className="btn btn-default btn-md float-right" to="/cities">Cancelar</Link>                            
                             </div>    
                         </div>    
                     </div>                                
@@ -104,3 +142,10 @@ export default class Form extends React.Component {
         );
     }
 }
+
+
+const mapStateToProps = state => {	
+    return { states: state.states.states }
+}
+
+export default connect(mapStateToProps)(Form)

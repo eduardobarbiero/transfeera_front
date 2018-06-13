@@ -11,7 +11,8 @@ export const HeaderNav = () => {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <div className="navbar-nav">
                     <Link className="nav-item nav-link" activeClassName="active" to="/home">Home</Link>
-                    <Link className="nav-item nav-link" activeClassName="active" to="/states" >Estados</Link>                        
+                    <Link className="nav-item nav-link" activeClassName="active" to="/states" >Estados</Link>
+                    <Link className="nav-item nav-link" activeClassName="active" to="/cities" >Cidades</Link>
                 </div>
             </div>
       </nav>

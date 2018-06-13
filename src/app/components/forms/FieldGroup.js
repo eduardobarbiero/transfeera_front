@@ -6,9 +6,7 @@ export const FieldGroup = ({ id, label, help, ...props }) => {
       <FormGroup 
         controlId={id}>
         <ControlLabel>{label}</ControlLabel>
-        <FormControl             
-            {...props}
-        />
+        <FormControl {...props} />
         {help && <HelpBlock>{help}</HelpBlock>}
         <div className="invalid-feedback" />
       </FormGroup>

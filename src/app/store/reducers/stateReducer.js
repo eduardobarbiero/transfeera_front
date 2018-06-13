@@ -1,8 +1,7 @@
 import { STATES } from 'store/actions/stateAction';
 
 const initialState = {
-    states: [],
-    editState: {}
+    states: []
 };
 
 export function stateReducer(state = initialState, action) {
