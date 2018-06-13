@@ -6,12 +6,14 @@ import { routerReducer, routerMiddleware, push } from 'react-router-redux';
 
 import { stateReducer } from "store/reducers/stateReducer";
 import { cityReducer } from "store/reducers/cityReducer";
+import { cepReducer } from "store/reducers/cepReducer";
 
 export const rootReducer = combineReducers(
   {
     routing: routerReducer,
     states: stateReducer,
-    cities: cityReducer
+    cities: cityReducer,
+    ceps: cepReducer
   }
 );
 

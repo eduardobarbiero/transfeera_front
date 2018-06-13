@@ -29,12 +29,6 @@ class Form extends React.Component {
         if (this.editMode)
             this.edit();
     }
-
-    getCities() {
-		CitiesController.index().then(cities => {
-            store.dispatch(citiesData(cities));            
-        });
-    }	
     
     getStates() {
 		StatesController.index().then(states => {
@@ -112,7 +106,7 @@ class Form extends React.Component {
                         </div> 
 
                         <div className="row mt-3">
-                            <div className="col">	
+                            <div className="col-6">	
                                 <SelectGroup
                                     id="state"                                    
                                     label="Estado"

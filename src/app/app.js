@@ -15,7 +15,8 @@ const routes = {
 	childRoutes: [
         require('modules/home/routes').default,
         require('modules/states/routes').default,
-        require('modules/cities/routes').default
+        require('modules/cities/routes').default,
+        require('modules/ceps/routes').default
 	]
 };
 

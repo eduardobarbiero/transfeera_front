@@ -13,6 +13,7 @@ export const HeaderNav = () => {
                     <Link className="nav-item nav-link" activeClassName="active" to="/home">Home</Link>
                     <Link className="nav-item nav-link" activeClassName="active" to="/states" >Estados</Link>
                     <Link className="nav-item nav-link" activeClassName="active" to="/cities" >Cidades</Link>
+                    <Link className="nav-item nav-link" activeClassName="active" to="/ceps" >CEPs</Link>
                 </div>
             </div>
       </nav>
