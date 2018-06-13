@@ -11,7 +11,7 @@ const history = syncHistoryWithStore(hashHistory, store);
 const routes = {
 
 	path: '/',
-	indexRoute: { onEnter: (nextState, replace) => replace('/') },
+	indexRoute: { onEnter: (nextState, replace) => replace('/home') },
 	childRoutes: [
         require('modules/home/routes').default,
         require('modules/states/routes').default,
@@ -21,10 +21,12 @@ const routes = {
 };
 
 ReactDOM.render((	
-    <Provider store={store}>
+    <Provider store={store}>        
         <Router
             history={history}
-            routes={routes}
-        />
+            routes={routes}            
+        >            
+        </Router>    
+        
     </Provider>	
 ), document.getElementById('root'));
